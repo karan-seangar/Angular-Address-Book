@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="header-section">
+    <h1 class="section-title">Contacts</h1>
+    <button class="add-btn" routerLink="/add">
+        <span>+</span> Add Contact
+    </button>
+    </div>
+
+    <table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (contact of contacts; track contact.id) {
+        <tr>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.address }}, {{ contact.city }}, {{ contact.state }} {{ contact.zip }}</td>
+            <td class="action-icons">
+            <button (click)="editContact(contact.id)">✏️</button>
+            <button (click)="deleteContact(contact.id)">🗑️</button>
+            </td>
+        </tr>
+        } @empty {
+        <tr>
+            <td colspan="5" style="text-align: center;">No contacts found</td>
+        </tr>
+        }
+    </tbody>
+    </table>
+</div>
+
+
